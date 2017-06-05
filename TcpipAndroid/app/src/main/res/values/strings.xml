@@ -1,4 +1,29 @@
 <resources>
     <string name="app_name">TcpipAndroid</string>
     <string name="action_settings">Settings</string>
+    <string name="hint_text">
+        You need two Android devices to test the demo.
+        \n \n
+        Instructions:
+        \n \n
+        Server Module:
+        \n \n
+        Install the Server application onto device A.
+        \n
+        Manually create a portable WiFi Hotspot using Android Settings.
+        \n
+        Run the Server Application.
+        \n\n\n
+        Client Module:
+        \n\n
+        Install the client application onto device B.
+        \n
+        Manually connect to the hotspot, created by device A.
+        \n
+        Use Wifi settings to connect to the hotspot.
+        \n\n
+        Launch the Client Application.
+        \n
+        Note:-Server application must be launched in device A before launching Client application in Device B.
+</string>
 </resources>

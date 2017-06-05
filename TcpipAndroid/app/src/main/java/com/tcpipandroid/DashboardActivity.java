@@ -12,7 +12,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.tcpipandroid.client.ActClient;
+import com.tcpipandroid.client.ClientMainActivity;
 import com.tcpipandroid.server.ActServer;
+import com.tcpipandroid.server.ServerMainActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -50,6 +52,28 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(DashboardActivity.this, ActServer.class));
             }
         });
+
+
+
+        Button btnClient1 = (Button) findViewById(R.id.btnClient1);
+        btnClient1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "ActClient App", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(DashboardActivity.this, ClientMainActivity.class));
+            }
+        });
+
+
+        Button btnServer1 = (Button) findViewById(R.id.btnServer1);
+        btnServer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "ActServer App", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(DashboardActivity.this, ServerMainActivity.class));
+            }
+        });
+
 
 
 

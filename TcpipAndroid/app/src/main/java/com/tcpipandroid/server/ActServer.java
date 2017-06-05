@@ -31,6 +31,7 @@ public class ActServer extends Activity {
 
 
 	public static int SERVERPORT = 6000;
+//	public static int SERVERPORT = 5000;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
