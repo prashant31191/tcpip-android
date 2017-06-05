@@ -79,7 +79,7 @@
                     android:id="@+id/textViewClMsg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Client Message"
+                    android:text="Send Message From Client App"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Button

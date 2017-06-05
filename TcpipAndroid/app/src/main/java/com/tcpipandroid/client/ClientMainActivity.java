@@ -51,6 +51,8 @@ public class ClientMainActivity extends Activity {
                 clientAST.execute(new String[] {
                         intToIP(myWifiManager.getDhcpInfo().gateway), SERVER_PORT,
                         Client_Name+" : "+textS.getText().toString() });
+
+                textS.setText("");
             }
         });
     }

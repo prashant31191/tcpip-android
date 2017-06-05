@@ -33,7 +33,7 @@ import com.tcpipandroid.R;
 public class ServerMainActivity extends Activity {
     private TextView tvClientMsg, tvServerIP, tvServerPort;
     private final int SERVER_PORT = 8080;
-    private String Server_Name = "Kingspp";
+    private String Server_Name = "XYZ...";
     Button clear;
 
     @Override
