@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:gravity="left|center"
+        android:inputType="text"
+        android:text="Hello"
+        android:hint="Write Message..."
+        android:lines="5"
+        android:maxLines="8"
+        android:imeOptions="actionSend"
+        android:singleLine="false" />
+
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Send Message To Server"
+        android:layout_below="@+id/EditText01"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </Button>
+
+        <LinearLayout
+            android:id="@+id/llSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myButton"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etServerIp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter server ip."
+                android:text="10.0.2.2"
+                android:singleLine="false" />
+
+            <EditText
+                android:id="@+id/etServerPort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter server port."
+                android:text="5000"
+                android:singleLine="false" />
+
+
+            <Button
+                android:id="@+id/btnCustome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EditText01"
+                android:text="SET CUSTOME SERVER" />
+
+            <Button
+                android:id="@+id/btnDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EditText01"
+                android:text="SET DEFAULT SERVER" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
