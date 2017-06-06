@@ -11,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.tcpipandroid.client.ActClient;
 import com.tcpipandroid.client.ClientMainActivity;
-import com.tcpipandroid.server.ActServer;
 import com.tcpipandroid.server.ServerMainActivity;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -24,35 +22,6 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        Button btnClient = (Button) findViewById(R.id.btnClient);
-        btnClient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "ActClient App", Snackbar.LENGTH_LONG).show();
-                startActivity(new Intent(DashboardActivity.this, ActClient.class));
-            }
-        });
-
-
-        Button btnServer = (Button) findViewById(R.id.btnServer);
-        btnServer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "ActServer App", Snackbar.LENGTH_LONG).show();
-                startActivity(new Intent(DashboardActivity.this, ActServer.class));
-            }
-        });
-
 
 
         Button btnClient1 = (Button) findViewById(R.id.btnClient1);
