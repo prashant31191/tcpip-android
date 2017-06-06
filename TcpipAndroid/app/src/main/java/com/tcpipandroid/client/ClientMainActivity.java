@@ -1,39 +1,44 @@
 package com.tcpipandroid.client;
 
-/**
- * Created by prashant.patel on 6/5/2017.
- */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
-        import java.io.BufferedReader;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.io.PrintWriter;
-        import java.net.Socket;
-        import java.net.UnknownHostException;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
-        import android.annotation.SuppressLint;
-        import android.app.Activity;
-        import android.content.Context;
-        import android.net.wifi.WifiManager;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.view.View.OnClickListener;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.TextView;
+import com.tcpipandroid.R;
 
-        import com.tcpipandroid.R;
+import static android.widget.EditText.*;
 
 public class ClientMainActivity extends Activity {
     private TextView tvServerMessage;
-    Button send;
+    Button send,btnClear;
     final private String SERVER_PORT = "8080";
-    int id=0;
-    private String Client_Name = "Bobby";
-    EditText textS;
+    int id = 0;
+    private String Client_Name = "Prince";
+    EditText etMessage;
+    TextView tvMessages;
+    ScrollView scrollview;
+    String strMessage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +47,65 @@ public class ClientMainActivity extends Activity {
         @SuppressLint("WifiManagerLeak")
         final WifiManager myWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         tvServerMessage = (TextView) findViewById(R.id.textViewServerMessage);
-        textS = (EditText)findViewById(R.id.editText1);
-        send =(Button) findViewById(R.id.button1);
+        scrollview = (ScrollView) findViewById(R.id.scrollview);
+        etMessage = (EditText) findViewById(R.id.etMessage);
+        tvMessages = (TextView) findViewById(R.id.tvMessages);
+        send = (Button) findViewById(R.id.btnSend);
+        btnClear = (Button)findViewById(R.id.btnClear);
+        btnClear.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                tvMessages.setText("");
+
+            }
+        });
+
+
+        etMessage.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    //do here your stuff f
+                    send.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+        
         send.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClientAsyncTask clientAST = new ClientAsyncTask();
-                clientAST.execute(new String[] {
-                        intToIP(myWifiManager.getDhcpInfo().gateway), SERVER_PORT,
-                        Client_Name+" : "+textS.getText().toString() });
 
-                textS.setText("");
+                strMessage = etMessage.getText().toString().trim();
+                if(strMessage !=null && strMessage.length() > 0) {
+                    ClientAsyncTask clientAST = new ClientAsyncTask();
+
+                clientAST.execute(new String[]{
+                        intToIP(myWifiManager.getDhcpInfo().gateway), SERVER_PORT,
+                        Client_Name + " : " +strMessage});
+
+                    if(strMessage !=null && strMessage.length() > 0)
+                    {
+                        tvMessages.append(strMessage+"\n \n");
+                    }
+
+                    scrollview.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                        }
+                    });
+
+                    strMessage = "";
+                    etMessage.setText("");
+                }
+                else
+                {
+                    Snackbar.make(etMessage,"Please enter message.",Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -92,7 +145,7 @@ public class ClientMainActivity extends Activity {
                 e.printStackTrace();
             } catch (UnknownHostException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return result;
@@ -102,6 +155,8 @@ public class ClientMainActivity extends Activity {
         protected void onPostExecute(String s) {
 
             tvServerMessage.setText(s);
+
+
         }
     }
 }

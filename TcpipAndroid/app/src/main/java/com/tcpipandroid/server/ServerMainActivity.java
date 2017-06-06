@@ -1,9 +1,5 @@
 package com.tcpipandroid.server;
 
-/**
- * Created by prashant.patel on 6/5/2017.
- */
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,12 +22,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.tcpipandroid.R;
 
 public class ServerMainActivity extends Activity {
     private TextView tvClientMsg, tvServerIP, tvServerPort;
+    private ScrollView scrollview;
     private final int SERVER_PORT = 8080;
     private String Server_Name = "XYZ...";
     Button clear;
@@ -43,6 +41,7 @@ public class ServerMainActivity extends Activity {
         tvClientMsg = (TextView) findViewById(R.id.textViewClientMessage);
         tvServerIP = (TextView) findViewById(R.id.textViewServerIP);
         tvServerPort = (TextView) findViewById(R.id.textViewServerPort);
+        scrollview = (ScrollView) findViewById(R.id.scrollview);
         tvServerPort.setText(Integer.toString(SERVER_PORT));
         getDeviceIpAddress();
 
@@ -132,7 +131,13 @@ public class ServerMainActivity extends Activity {
         @Override
         protected void onPostExecute(String s) {
 
-            tvClientMsg.append(s+"\n");
+            tvClientMsg.append(s+"\n \n");
+            scrollview.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                }
+            });
 
         }
     }

@@ -29,22 +29,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnClient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Client App"
-            android:visibility="gone"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/btnServer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Server App"
-            android:visibility="gone"
-            tools:ignore="MissingConstraints" />
-
 
 
 
@@ -53,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Step=1-Server App"
-            android:layout_marginTop="20dp"
+
             tools:ignore="MissingConstraints" />
         <Button
             android:id="@+id/btnClient1"

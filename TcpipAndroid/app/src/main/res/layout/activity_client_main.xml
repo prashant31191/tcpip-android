@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewsrvrMsg"
@@ -24,38 +24,96 @@
                 android:layout_alignParentLeft="true"
 
                 android:text="Send Message to Server :"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <EditText
-                android:id="@+id/editText1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textViewsrvrMsg"
-                android:layout_marginTop="24dp"
-                android:hint="Enter message..."
-                android:ems="10" >
-
-                <requestFocus />
-            </EditText>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#919191"/>
 
             <TextView
                 android:id="@+id/textViewServerMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/editText1"
-                android:layout_alignParentRight="true"
 
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:text="Welcome..."
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textViewsrvrMsg"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="#111111"/>
+
+            <EditText
+                android:id="@+id/etMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewServerMessage"
+                android:layout_marginTop="20dp"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:singleLine="true"
+                android:gravity="left|center"
+                android:hint="Enter message..."
+                android:minHeight="60dp">
+
+                <requestFocus />
+            </EditText>
+
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/btnSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/editText1"
-                android:layout_marginTop="14dp"
-                android:text="Send" />
+                android:layout_below="@+id/etMessage"
+                android:layout_marginTop="10dp"
+                android:text="SEND MESSAGE" />
+            <Button
+                android:id="@+id/btnClear"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/etMessage"
+                android:layout_marginTop="10dp"
+                android:text="CLEAR MESSAGES" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/btnSend"
+                android:background="#e1e1e1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvMessagesTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="18dp"
+                    android:textColor="#111"
+                    android:text="Send Messages..."
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    />
+                <ScrollView
+                    android:id="@+id/scrollview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvMessages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textSize="15dp"
+                        android:textColor="#111"
+                        android:text=""
+                        android:padding="5dp"
+                        />
+                    </LinearLayout>
+                </ScrollView>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

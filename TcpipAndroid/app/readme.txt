@@ -30,6 +30,26 @@ Server application must be launched in device A before launching Client applicat
 
 
 
+
+
+
+
+
+
+
+
+
+----------------
+Demo-1
+----------------
+
+F:\Studio_SDK\Android\sdk\platform-tools
+
+telnet localhost 5554
+
+
+
+
 for more detail reference from
 
 https://examples.javacodegeeks.com/android/core/socket-core/android-socket-example/
