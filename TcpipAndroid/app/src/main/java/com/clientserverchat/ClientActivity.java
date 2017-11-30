@@ -85,6 +85,7 @@ public class ClientActivity extends Activity {
             }
             catch(IOException e)
             {
+                e.printStackTrace();
             }
         }
     }
@@ -123,7 +124,9 @@ public class ClientActivity extends Activity {
                 }
             }
             catch (Exception e)
-            {}
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

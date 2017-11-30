@@ -87,6 +87,7 @@ public class ServerActivity extends AppCompatActivity {
             }
             catch(IOException e)
             {
+                e.printStackTrace();
             }
         }
     }
@@ -132,6 +133,7 @@ public class ServerActivity extends AppCompatActivity {
             }
             catch (Exception e)
             {
+                e.printStackTrace();
             }
         }
     }
