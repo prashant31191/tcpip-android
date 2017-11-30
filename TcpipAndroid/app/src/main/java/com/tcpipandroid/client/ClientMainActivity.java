@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Random;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -33,8 +34,7 @@ public class ClientMainActivity extends Activity {
     private TextView tvServerMessage;
     Button send,btnClear;
     final private String SERVER_PORT = "8080";
-    int id = 0;
-    private String Client_Name = "Prince";
+    private String strClientName = "Prince";
     EditText etMessage;
     TextView tvMessages;
     ScrollView scrollview;
@@ -46,6 +46,8 @@ public class ClientMainActivity extends Activity {
         setContentView(R.layout.activity_client_main);
         @SuppressLint("WifiManagerLeak")
         final WifiManager myWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        Random random = new Random();
+        strClientName = strClientName + "_"+String.format("%04d", random.nextInt(10000));;
         tvServerMessage = (TextView) findViewById(R.id.textViewServerMessage);
         scrollview = (ScrollView) findViewById(R.id.scrollview);
         etMessage = (EditText) findViewById(R.id.etMessage);
@@ -85,7 +87,7 @@ public class ClientMainActivity extends Activity {
 
                 clientAST.execute(new String[]{
                         intToIP(myWifiManager.getDhcpInfo().gateway), SERVER_PORT,
-                        Client_Name + " : " +strMessage});
+                        strClientName + " : " +strMessage});
 
                     if(strMessage !=null && strMessage.length() > 0)
                     {
