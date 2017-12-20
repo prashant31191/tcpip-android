@@ -51,7 +51,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.clientserverchat.ActDashboatdClientServerChat"
+            android:name="com.ActDashboardMessage"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -61,10 +61,36 @@
             </intent-filter>
         </activity>
 
+
+
+         <!--for the tcp ip-->
         <activity android:name="com.clientserverchat.ClientActivity"/>
 
         <activity android:name="com.clientserverchat.ServerActivity"/>
 
+        <activity
+            android:name="com.clientserverchat.ActDashboatdClientServerChat"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <!--end 1-->
+
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".client.ClientMainActivity"/>
+
+        <activity android:name=".server.ServerMainActivity"/>
+
+        <!--end 2-->
 
 
 

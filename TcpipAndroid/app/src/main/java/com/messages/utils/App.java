@@ -40,14 +40,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alarm.AlarmManagerBroadcastReceiver;
-import com.azapps.callrecorder.R;
-import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.polaric.colorful.Colorful;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,8 +60,6 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.fabric.sdk.android.Fabric;
-
 //import android.support.multidex.MultiDex;
 
 
@@ -76,8 +69,6 @@ public class App extends Application {
     private static final String TWITTER_KEY = "11111";
     private static final String TWITTER_SECRET = "11111";
 
-    // for study reminder alarm
-    public static AlarmManagerBroadcastReceiver alarm;
 
     private static final String TAG = App.class.getSimpleName();
 
@@ -90,10 +81,6 @@ public class App extends Application {
     // class for the share pref keys and valyes get set
     public static SharePrefrences sharePrefrences;
 
-    // for the Google login
-    public static GoogleApiClient mGoogleApiClient;
-
-
     // for the app context
     static Context mContext;
 
@@ -101,8 +88,8 @@ public class App extends Application {
     static Typeface tf_Regular, tf_Bold;
 
     //Live
-    public static String strBaseHostUrl = "http://cramserver.site/";
-    public static String strBaseUploadedPicUrl = "http://cramserver.site/images/profile/";
+    public static String strBaseHostUrl = "http://asd.site/";
+    public static String strBaseUploadedPicUrl = "http://asd.site/images/profile/";
 
     //Test
    /* public static String strBaseHostUrl = "http://takeourorder.com/cramstation/";
@@ -110,57 +97,7 @@ public class App extends Application {
 */
 
 
-    public static String APP_USERTYPE = "0"; // user_type = 0 for customer/traveller & user_type = 1 for driver
-    public static String APP_MODE = "1"; // appmode 1 = Live   2=testing
-    public static String APP_PLATFORM = "2"; // platform = 2   passing app platefrom  2 for android
 
-
-    public static String OP_REGISTER = "register";//done
-    public static String OP_LOGIN = "login"; //done
-    public static String OP_CHECKACCOUNTEXIST = "checkaccountexist"; //done
-    public static String OP_LOGINSOCIAL = "loginsocial"; // done
-    public static String OP_FORGOT_PWD = "forgot_pwd"; // done
-
-    public static String OP_GET_ARTICLE_LIST = "get_article_list"; // done
-
-    public static String OP_GETEXECUTIVESUMMERYLIST = "getexecutivesummerylist"; // done
-    public static String OP_GETTOPICALQUIZLIST = "gettopicalquizlist"; // done
-    public static String OP_GETEXECUTIVESUMMERY = "getexecutivesummery"; // done
-    public static String OP_READEXECUTIVESUMMARY = "readexecutivesummary";
-
-    public static String OP_GETFLASHCARDTOPICLIST = "getflashcardtopiclist"; // done
-    public static String OP_GETTOPICALQUIZ = "gettopicalquiz"; // done
-    public static String OP_RESUMETOPICALQUIZ = "resumetopicalquiz"; // done
-    public static String OP_SETTOPICALQUIZANSWER = "settopicalquizanswer"; // w
-    public static String OP_SETEXAMANSWER = "setexamanswer"; // testing
-    public static String OP_EXAM_SIMULATION = "exam_simulation"; // testing
-
-    public static String OP_PERFORMANCE_ANALYTICS = "performance_analytics"; // done
-
-    public static String OP_GETFLASHCARDS = "getflashcards"; // done
-    public static String OP_QUICKSTARTFLASHCARD = "quickstartflashcard"; // done
-    public static String OP_SETFLASHCARDANSWER = "setflashcardanswer"; // done
-    public static String OP_EDITPROFILE = "editprofile"; // testing
-
-
-    public static String OP_VIEW_PROFILE = "viewprofile";
-    public static String OP_NOTI_LIST = "noti_list";
-
-    public static String OP_NOTI_READ = "noti_read";
-    public static String OP_NOTI_DELETE = "noti_delete";
-    public static String OP_CHANGE_PWD = "change_password";
-    public static String OP_PURCHASE = "purchase"; //done--need-re-testing
-    public static String OP_GETPURCHASERATE = "getpurchaserate"; //done--need-re-testing
-    public static String OP_REMINDERSETTING = "remindersetting";
-
-    public static String OP_TESTEXAM = "testexam";
-    public static String OP_UPDATEDEVICEINFO = "updatedeviceinfo"; //done
-
-    public static String OP_GETCOUNTRY = "GetCountry";
-    public static String OP_GETSTATE = "GetState";
-    public static String OP_GETCITY = "GetCity";
-
-    public static String OP_LOGOUT = "logout"; //done
 
 
     @Override
@@ -179,14 +116,7 @@ public class App extends Application {
         */
 
         try {
-           // MultiDex.install(this);
-            Colorful.defaults()
-                    .primaryColor(Colorful.ThemeColor.RED)
-                    .accentColor(Colorful.ThemeColor.BLUE)
-                    .translucent(false)
-                    .dark(true);
 
-            Colorful.init(this);
 
 
             mContext = getApplicationContext();
@@ -194,112 +124,13 @@ public class App extends Application {
             getFont_Regular();
             getFont_Bold();
             createAppFolder();
-            Fabric.with(this, new Crashlytics());
-            //setApplyTheme();
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void setApplyTheme()
-    {
-        Colorful.defaults()
-                .primaryColor(Colorful.ThemeColor.RED)
-                .accentColor(Colorful.ThemeColor.BLUE)
-                .translucent(false)
-                .dark(true);
-        Colorful.init(mContext);
-    }
-
-
-    public static void setApplyThemeRuntime(Colorful.ThemeColor primary,Colorful.ThemeColor accent)
-    {
-        Colorful.config(mContext)
-                .primaryColor(primary)
-                .accentColor(accent)
-                .translucent(false)
-                .dark(true)
-                .apply();
-    }
-
-
-    public static void setApplyThemeRuntimeP(Colorful.ThemeColor primary)
-    {
-        App.showLog("====setApplyThemeRuntimeP====00=="+primary.getColorRes());
-        Colorful.config(mContext)
-                .primaryColor(primary)
-                .translucent(false)
-               // .dark(true)
-                .apply();
-    }
-
-
-
-    public static void setApplyThemeRuntimeA(Colorful.ThemeColor accent)
-    {
-        App.showLog("====setApplyThemeRuntimeA====00=="+accent.getColorRes());
-
-        Colorful.config(mContext)
-                .accentColor(accent)
-                .translucent(false)
-               // .dark(true)
-                .apply();
-    }
-    public static void setApplyThemeRuntimeDark(boolean isDark)
-    {
-        App.showLog("====setApplyThemeRuntimeDark====00=="+isDark);
-
-        Colorful.config(mContext)
-                .translucent(false)
-                .dark(isDark)
-                .apply();
-    }
-
-
-    public static int fetchPrimaryColor() {
-        TypedValue typedValue = new TypedValue();
-
-        mContext.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
-        int color = typedValue.data;
-
-/*
-
-        TypedArray a = mContext.obtainStyledAttributes(typedValue.data, new int[] { R.attr.colorPrimary });
-        int color = a.getColor(0, 0);
-
-
-        a.recycle();
-*/
-        color = Colorful.getThemeDelegate().getPrimaryColor().getColorRes();
-        App.showLog("====p=color=="+color);
-
-        return color;
-    }
-
-    public static int fetchAccentColor() {
-        TypedValue typedValue = new TypedValue();
-
-        mContext.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
-        int color = typedValue.data;
-
- /*       TypedArray a = mContext.obtainStyledAttributes(typedValue.data, new int[] { R.attr.colorAccent });
-        int color = a.getColor(0, 0);
-
-        a.recycle();
- */
-
-
-
-        color = Colorful.getThemeDelegate().getAccentColor().getColorRes();
-        App.showLog("====a=color=="+color);
-        return color;
-    }
-
-    public static boolean isDarkTheme()
-    {
-        return  Colorful.getThemeDelegate().isDark();
-    }
 
     public static Bitmap RotateBitmap(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
@@ -1032,58 +863,6 @@ public class App extends Application {
         }
     }
 
-
-
-    // for the alarm notifications
-
-
-    public static void startAlarmServices(Context context)
-    {
-        if(alarm == null)
-        {
-            alarm = new AlarmManagerBroadcastReceiver();
-        }
-        if(alarm != null)
-        {
-            alarm.CancelAlarm(context);
-            //alarm.SetFrequencyAlarm(context);
-            alarm.setAsDefineOnetimeTimer(context,1);
-            //AppFlags.isStartAlarm = true;
-        }
-        else
-        {
-            Toast.makeText(context, "Reminder not start please try after some time.", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-
-    public static boolean isAlarmStarted(Context context) {
-
-        Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
-        intent.putExtra("onetime", Boolean.TRUE);
-
-        boolean alarmUp = (PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
-
-        return  alarmUp;
-    }
-
-    public static void stopAlarmServices(Context context)
-    {
-        if(alarm == null)
-        {
-            alarm = new AlarmManagerBroadcastReceiver();
-        }
-        if(alarm != null)
-        {
-            alarm.CancelAlarm(context);
-        }
-        else
-        {
-            Toast.makeText(context, "Reminder not stop please try after some time.", Toast.LENGTH_SHORT).show();
-        }
-    }
-    // finish alarm
 
 
 
