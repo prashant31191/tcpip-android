@@ -5,6 +5,8 @@
     <string name="notify_shutdown">notify_shutdown</string>
     <string name="replied">replied</string>
     <string name="reply">reply</string>
+    <string name="loading">loading</string>
+    <string name="description_refresh">refresh</string>
 
     <string name="send_1_conversation">send_1_conversation</string>
     <string name="send_2_conversations">send_2_conversations</string>

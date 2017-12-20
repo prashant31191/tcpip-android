@@ -20,6 +20,8 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -40,6 +42,18 @@
 
     <!-- Billing for in-app purchases -->
     <uses-permission android:name="com.android.vending.BILLING" />
+
+
+
+    <!--for the sync adapter-->
+    <uses-permission
+        android:name="android.permission.INTERNET"/>
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
 
 
 
@@ -79,11 +93,6 @@
             android:name=".DashboardActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".client.ClientMainActivity"/>
@@ -94,6 +103,8 @@
 
 
 
+
+        <!--for the messages-->
         <activity
             android:name="com.messages.ActMessages"
             android:screenOrientation="portrait" />
@@ -172,6 +183,89 @@
             </intent-filter>
         </receiver>
 
+        <!--end for the messages-->
+
+
+
+
+
+
+
+        <!--demo sync adapter-->
+        <!-- Main activity, responsible for showing a list of feed entries. -->
+        <activity
+            android:name="com.demosynch.EntryListActivity"
+            android:label="@string/app_name" >
+            <!-- This intent filter places this activity in the system's app launcher. -->
+
+        </activity>
+
+        <!-- ContentProvider to store feed data.
+
+        The "authorities" here are defined as part of a ContentProvider interface. It's used here
+        as an attachment point for the SyncAdapter. See res/xml/syncadapter.xml and
+        SyncService.java.
+
+        Since this ContentProvider is not exported, it will not be accessible outside of this app's
+        package.
+
+         android:syncable="true"
+         -->
+        <provider
+            android:name="com.demosynch.provider.FeedProvider"
+            android:authorities="com.example.android.network.sync.basicsyncadapter"
+
+            android:exported="false" />
+
+        <!-- This service implements our SyncAdapter. It needs to be exported, so that the system
+        sync framework can access it. -->
+        <service android:name="com.demosynch.SyncService"
+            android:exported="true">
+            <!-- This intent filter is required. It allows the system to launch our sync service
+            as needed. -->
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <!-- This points to a required XML file which describes our SyncAdapter. -->
+            <meta-data android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+        <!-- This implements the account we'll use as an attachment point for our SyncAdapter. Since
+        our SyncAdapter doesn't need to authenticate the current user (it just fetches a public RSS
+        feed), this account's implementation is largely empty.
+
+        It's also possible to attach a SyncAdapter to an existing account provided by another
+        package. In that case, this element could be omitted here. -->
+        <service android:name="com.demosynch.accounts.GenericAccountService">
+            <!-- Required filter used by the system to launch our account service. -->
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <!-- This points to an XMLf ile which describes our account service. -->
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!--end demo syc adapter-->
+
+
+
+        <!--for the sync adpter my-->
+
+        <activity android:name="com.synchdata.ActSyncData"/>
+        <service
+            android:name="com.synchdata.SyncService"
+            android:exported="true"
+            android:process=":sync">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+        <!--end my syc adapter-->
 
     </application>
 

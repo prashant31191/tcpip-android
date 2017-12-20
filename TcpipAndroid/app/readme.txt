@@ -62,3 +62,28 @@ details mesaage
 
 
 http://codetheory.in/android-sms/
+
+
+
+// set message default app
+https://android-developers.googleblog.com/2013/10/getting-your-sms-apps-ready-for-kitkat.html
+
+
+
+add icon
+https://developer.android.com/reference/android/accounts/package-summary.html
+
+--like that
+
+https://www.linkedin.com/pulse/syncing-contacts-android-application-mohit-sharma
+
+
+>> https://github.com/Miserlou/Android-SDK-Samples/blob/master/SampleSyncAdapter/src/com/example/android/samplesync/syncadapter/SyncAdapter.java
+
+
+
+>>--http://blog.udinic.com/2013/07/24/write-your-own-android-sync-adapter/
+
+
+
+https://developer.android.com/training/sync-adapters/creating-sync-adapter.html
