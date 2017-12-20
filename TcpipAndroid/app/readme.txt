@@ -87,3 +87,7 @@ https://www.linkedin.com/pulse/syncing-contacts-android-application-mohit-sharma
 
 
 https://developer.android.com/training/sync-adapters/creating-sync-adapter.html
+
+
+==http://www.c99.org/2010/01/23/writing-an-android-sync-provider-part-1/
+dEMO - https://github.com/c99koder/AndroidSyncProviderDemo
