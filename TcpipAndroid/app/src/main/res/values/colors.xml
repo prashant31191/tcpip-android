@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="default_color_light">#FF4081</color>
+
 
     <color name="username0">#e21400</color>
     <color name="username1">#91580f</color>

