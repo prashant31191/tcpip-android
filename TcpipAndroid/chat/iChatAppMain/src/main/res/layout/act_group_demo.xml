@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradiant">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:text="create GP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCreateGroup"
+            android:onClick="onCreateGroupClick"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="Add GP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddGroup"
+            android:onClick="onAddGroupClick"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btnCreateGroup"
+            android:layout_toEndOf="@+id/btnCreateGroup" />
+
+        <Button
+            android:text="Join GP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnJoinGroup"
+            android:onClick="onJoinGroupClick"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btnAddGroup"
+            android:layout_toEndOf="@+id/btnAddGroup" />
+
+        <Button
+            android:text="List GP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnListGroup"
+            android:onClick="onListGroupClick"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btnJoinGroup"
+            android:layout_toEndOf="@+id/btnJoinGroup" />
+
+
+    </RelativeLayout>
+</LinearLayout>

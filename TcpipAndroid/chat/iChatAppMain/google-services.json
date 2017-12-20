@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "707519402850",
+    "project_id": "eliteinfoworld.com:api-project-707519402850"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707519402850:android:d150eafea3b1427e",
+        "android_client_info": {
+          "package_name": "com.quickblox.sample.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCId6J9bURa2U5LJ2-BtwyqeE37ggIy3LQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

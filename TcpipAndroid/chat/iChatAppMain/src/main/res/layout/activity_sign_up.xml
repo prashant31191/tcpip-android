@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_sign_up"
+    style="@style/MatchParent"
+    android:background="@color/background_app_color"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small">
+
+    <!--<data>
+
+        <variable
+            name="user"
+            type="com.quickblox.users.model.QBUser" />
+    </data>-->
+
+    <android.support.design.widget.CoordinatorLayout style="@style/MatchParent">
+
+        <!--android:layout_marginLeft="@dimen/padding_small"
+        android:layout_marginRight="@dimen/margin_middle"
+        android:layout_marginTop="@dimen/margin_middle"-->
+        <ScrollView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/activity_show_user"
+            style="@style/MatchWidth"
+
+
+
+
+            android:background="@color/background_app_color"
+            tools:ignore="RtlHardcoded">
+
+            <LinearLayout
+                style="@style/MatchWidth"
+                android:orientation="vertical">
+
+
+
+               <!-- <TextView
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_full_name"
+                    android:text="@string/full_name"
+                    android:textColor="@color/black_light"
+                    android:textSize="@dimen/text_size_large" />
+
+                <EditText
+                    android:id="@+id/full_name_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_very_small"
+                    android:background="@android:color/transparent"
+                    android:inputType="text"
+                    android:hint="@string/full_name"
+                    android:textColor="@color/warm_gray"
+                    android:textSize="@dimen/text_size_middle"
+                    tools:text="@string/alex_full" />-->
+
+                <EditText
+                    android:id="@+id/full_name_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginLeft="@dimen/margin_negative"
+                    android:layout_marginTop="@dimen/margin_large"
+
+                    android:inputType="text"
+                    android:hint="@string/full_name"
+                    android:textColor="@color/warm_gray"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextNotEditableTheme"
+                    tools:ignore="Deprecated,TextFields" />
+
+               <!-- <TextView
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_email"
+                    android:text="@string/email"
+                    android:textColor="@color/black_light"
+                    android:textSize="@dimen/text_size_large" />
+
+                <EditText
+                    android:id="@+id/email_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_very_small"
+                    android:background="@android:color/transparent"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/email"
+                    android:textColor="@color/warm_gray"
+                    android:textSize="@dimen/text_size_middle"
+                    tools:text="@string/alex_email" />-->
+                <EditText
+                    android:id="@+id/email_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginLeft="@dimen/margin_negative"
+                    android:layout_marginTop="@dimen/margin_large"
+
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/email"
+                    android:textColor="@color/warm_gray"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextNotEditableTheme"
+                    tools:ignore="Deprecated,TextFields" />
+
+
+                <EditText
+                    android:id="@+id/phone_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginLeft="@dimen/margin_negative"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:hint="@string/phone_number"
+                    android:inputType="phone|number"
+                    android:textColor="@color/warm_gray"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextNotEditableTheme"
+                    tools:ignore="Deprecated,TextFields" />
+
+                <EditText
+                    android:id="@+id/tag_textview"
+                    style="@style/MatchWidth"
+                    android:layout_marginLeft="@dimen/margin_negative"
+                    android:layout_marginTop="@dimen/margin_tags"
+                    android:hint="@string/tags"
+
+                    android:textColor="@color/warm_gray"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextNotEditableTheme"
+                    tools:ignore="Deprecated" />
+
+
+                <EditText
+                    android:id="@+id/login_up_edittext"
+                    style="@style/MatchWidth"
+                    android:hint="@string/username"
+                    android:singleLine="true"
+                    android:textColor="@color/black_light"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextTheme" />
+
+                <com.devspark.robototextview.widget.RobotoEditText
+                    android:id="@+id/password_up_edittext"
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_middle"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black_light"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextTheme"
+                    app:typeface="roboto_regular" />
+
+                <com.devspark.robototextview.widget.RobotoEditText
+                    android:id="@+id/password_confirm_edittext"
+                    style="@style/MatchWidth"
+                    android:layout_marginTop="@dimen/margin_middle"
+                    android:hint="@string/confirm_password"
+                    android:imeOptions="actionSend"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black_light"
+                    android:textColorHint="@color/warm_gray_two"
+                    android:textSize="@dimen/text_size_large"
+                    android:theme="@style/EditTextTheme"
+                    app:typeface="roboto_regular" />
+
+
+
+                <Button
+                    android:text="Signup"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnSignup" />
+
+                <Button
+                    android:text="Already have a account"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnLogin" />
+
+            </LinearLayout>
+        </ScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+</LinearLayout>

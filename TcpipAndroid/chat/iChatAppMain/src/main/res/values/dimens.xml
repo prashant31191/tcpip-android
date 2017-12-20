@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="unread_counter_text_size">13sp</dimen>
+
+    <dimen name="chat_date_text_size">13sp</dimen>
+    <dimen name="chat_date_header_top_margin">30dp</dimen>
+
+    <dimen name="chat_author_text_size">16sp</dimen>
+    <dimen name="chat_attachment_preview_size">80dp</dimen>
+
+    <dimen name="chat_message_body_text_size">16sp</dimen>
+    <dimen name="chat_message_info_text_size">13sp</dimen>
+    <dimen name="chat_message_content_margin">4dp</dimen>
+    <dimen name="chat_message_username_margin">@dimen/chat_message_content_margin</dimen>
+
+    <dimen name="chat_message_attachment_username_margin">12dp</dimen>
+    <dimen name="chat_message_attachment_size">160dp</dimen>
+
+    <dimen name="list_item_side_margin">@dimen/padding_common_twice</dimen>
+
+
+
+    <!--for the user-->
+    <dimen name="margin_negative">-5dp</dimen>
+    <dimen name="margin_very_small">3dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_middle">8dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_very_large">80dp</dimen>
+
+    <dimen name="margin_tags">8dp</dimen>
+    <dimen name="margin_full_name">17dp</dimen>
+    <dimen name="margin_email">34dp</dimen>
+
+    <dimen name="padding_small">16dp</dimen>
+    <dimen name="padding_middle">23dp</dimen>
+    <dimen name="padding_large">26dp</dimen>
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_middle">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+
+</resources>
